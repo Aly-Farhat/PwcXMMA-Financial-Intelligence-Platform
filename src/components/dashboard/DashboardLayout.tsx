@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { BarChart3, ShieldCheck } from "lucide-react";
+import { BarChart3, ShieldCheck, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface DashboardLayoutProps {
@@ -34,6 +34,16 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             <Link to="/compliance">
               <ShieldCheck className="mr-1 h-4 w-4" />
               Risk & Compliance
+            </Link>
+          </Button>
+          <Button 
+            variant={location.pathname === "/innovation" ? "default" : "outline"}
+            size="sm"
+            asChild
+          >
+            <Link to="/innovation">
+              <Lightbulb className="mr-1 h-4 w-4" />
+              Innovation
             </Link>
           </Button>
         </div>
