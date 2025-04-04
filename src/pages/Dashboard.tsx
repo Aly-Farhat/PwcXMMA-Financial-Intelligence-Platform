@@ -88,12 +88,18 @@ const operationalEfficiencyData = [
 
 const chartConfig = {
   accuracy: {
-    light: "#9b87f5",
-    dark: "#7E69AB",
+    label: "AI Platform",
+    theme: {
+      light: "#9b87f5",
+      dark: "#7E69AB",
+    }
   },
   previous: {
-    light: "#d6d3df",
-    dark: "#454152",
+    label: "Previous System",
+    theme: {
+      light: "#d6d3df",
+      dark: "#454152",
+    }
   },
 };
 
