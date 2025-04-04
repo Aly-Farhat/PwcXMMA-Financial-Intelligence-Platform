@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   AreaChart, 
@@ -23,13 +22,13 @@ import {
   Code2, 
   Layers, 
   Network, 
-  PuzzlePiece,
+  Puzzle,
   SquareCode,
   Lightbulb,
   Cpu,
   BarChart3,
   DollarSign,
-  RocketLaunch,
+  Rocket,
   ToggleLeft,
   ShieldCheck,
   AlertTriangle
@@ -52,7 +51,6 @@ import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
-// Mock data for the dashboard
 const moduleUsageData = [
   { name: "Jan", core: 65, custom: 25, partner: 10 },
   { name: "Feb", core: 68, custom: 22, partner: 10 },
@@ -155,7 +153,7 @@ const InnovationDashboard = () => {
         <Card className="col-span-1">
           <CardHeader>
             <CardTitle className="flex items-center text-lg">
-              <PuzzlePiece className="mr-2 h-5 w-5 text-primary" />
+              <Puzzle className="mr-2 h-5 w-5 text-primary" />
               Modular Architecture
             </CardTitle>
             <CardDescription>Component usage by type</CardDescription>
@@ -399,7 +397,7 @@ const InnovationDashboard = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center text-lg">
-              <RocketLaunch className="mr-2 h-5 w-5 text-primary" />
+              <Rocket className="mr-2 h-5 w-5 text-primary" />
               Revenue Potential
             </CardTitle>
             <CardDescription>Monetization strategies</CardDescription>
