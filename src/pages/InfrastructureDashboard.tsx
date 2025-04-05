@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
@@ -13,26 +12,26 @@ import { AlertCircle, Database, Server, Cloud, GitBranch, Cpu, Network } from "l
 const InfrastructureDashboard = () => {
   const [useCase, setUseCase] = useState("fraud");
   
-  // Architecture components
+  // Architecture components - Fix type to match FlowNode interface
   const architectureNodes = [
     // Data Sources
-    { id: "web_scraper", name: "Azure Web Scraper", type: "service", description: "Public data collection" },
-    { id: "api_ingestor", name: "API Ingestor", type: "service", description: "Internal data feeds" },
+    { id: "web_scraper", name: "Azure Web Scraper", type: "service" as const, description: "Public data collection" },
+    { id: "api_ingestor", name: "API Ingestor", type: "service" as const, description: "Internal data feeds" },
     
     // Processing
-    { id: "databricks", name: "Databricks", type: "compute", description: "ETL & Feature Engineering" },
-    { id: "azureml", name: "Azure ML", type: "compute", description: "GNN Training" },
-    { id: "functions", name: "Azure Functions", type: "compute", description: "Serverless Processing" },
+    { id: "databricks", name: "Databricks", type: "compute" as const, description: "ETL & Feature Engineering" },
+    { id: "azureml", name: "Azure ML", type: "compute" as const, description: "GNN Training" },
+    { id: "functions", name: "Azure Functions", type: "compute" as const, description: "Serverless Processing" },
     
     // Storage
-    { id: "adls", name: "ADLS Gen2", type: "storage", description: "Raw & Processed Data" },
-    { id: "cosmosdb", name: "CosmosDB", type: "storage", description: "Graph Database" },
-    { id: "blob", name: "Blob Storage", type: "storage", description: "Model Artifacts" },
+    { id: "adls", name: "ADLS Gen2", type: "storage" as const, description: "Raw & Processed Data" },
+    { id: "cosmosdb", name: "CosmosDB", type: "storage" as const, description: "Graph Database" },
+    { id: "blob", name: "Blob Storage", type: "storage" as const, description: "Model Artifacts" },
     
     // Security
-    { id: "oauth", name: "OAuth 2.0", type: "security" },
-    { id: "sas", name: "SAS Tokens", type: "security" },
-    { id: "keyvault", name: "Key Vault", type: "security" }
+    { id: "oauth", name: "OAuth 2.0", type: "security" as const },
+    { id: "sas", name: "SAS Tokens", type: "security" as const },
+    { id: "keyvault", name: "Key Vault", type: "security" as const }
   ];
   
   const architectureConnections = [
@@ -44,72 +43,72 @@ const InfrastructureDashboard = () => {
     { source: "cosmosdb", target: "functions", label: "Query API" }
   ];
   
-  // Pipeline metrics
+  // Pipeline metrics - Fix status type to match PipelineStep interface
   const pipelineSteps = [
     { 
       name: "Data Collection", 
-      status: "success", 
+      status: "success" as const, 
       latency: 352, 
       throughput: 843, 
       lastRun: "5 min ago" 
     },
     { 
       name: "Data Processing", 
-      status: "success", 
+      status: "success" as const, 
       latency: 1247, 
       throughput: 231, 
       lastRun: "15 min ago" 
     },
     { 
       name: "Feature Engineering", 
-      status: "warning", 
+      status: "warning" as const, 
       latency: 3842, 
       throughput: 102, 
       lastRun: "25 min ago" 
     },
     { 
       name: "Model Training", 
-      status: "pending", 
+      status: "pending" as const, 
       lastRun: "45 min ago" 
     },
     { 
       name: "Deployment", 
-      status: "success", 
+      status: "success" as const, 
       latency: 682, 
       lastRun: "2 hrs ago" 
     }
   ];
   
-  // Security events
+  // Security events - Fix type to match SecurityEvent interface
   const securityEvents = [
     {
       id: "evt-001",
-      type: "authentication",
-      severity: "low",
+      type: "authentication" as const,
+      severity: "low" as const,
       description: "Multiple authentication attempts from approved IP range",
       timestamp: "2025-04-05 09:43:21",
       source: "Azure AD"
     },
     {
       id: "evt-002",
-      type: "authorization",
-      severity: "medium",
+      type: "authorization" as const,
+      severity: "medium" as const,
       description: "Unusual access pattern to CosmosDB detected",
       timestamp: "2025-04-05 08:17:33",
       source: "CosmosDB"
     },
     {
       id: "evt-003",
-      type: "network",
-      severity: "high",
+      type: "network" as const,
+      severity: "high" as const,
       description: "Request rate limit exceeded from external API client",
       timestamp: "2025-04-05 07:55:12",
       source: "API Gateway"
     },
     {
       id: "evt-004",
-      type: "data",
-      severity: "critical",
+      type: "data" as const,
+      severity: "critical" as const,
       description: "Access attempt to sensitive data from unauthorized service principal",
       timestamp: "2025-04-05 06:32:09",
       source: "ADLS Gen2"
