@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   AreaChart, 
@@ -159,11 +160,11 @@ const InnovationDashboard = () => {
             <CardDescription>Component usage by type</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer className="h-[300px]" config={chartConfig}>
+            <ChartContainer className="h-[280px]" config={chartConfig}>
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                   data={moduleUsageData}
-                  margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                  margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
@@ -352,7 +353,7 @@ const InnovationDashboard = () => {
                 <span className="font-medium">Theme Distribution</span>
                 <span className="text-sm text-muted-foreground">By client sector</span>
               </div>
-              <div className="h-[200px]">
+              <div className="h-[170px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -360,7 +361,7 @@ const InnovationDashboard = () => {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      outerRadius={80}
+                      outerRadius={60}
                       fill="#8884d8"
                       dataKey="usage"
                       label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
@@ -405,7 +406,7 @@ const InnovationDashboard = () => {
           <CardContent className="grid grid-cols-2 gap-4">
             <div>
               <div className="font-medium mb-2">Revenue Models</div>
-              <div className="h-[200px]">
+              <div className="h-[170px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -413,7 +414,7 @@ const InnovationDashboard = () => {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      outerRadius={80}
+                      outerRadius={60}
                       fill="#8884d8"
                       dataKey="value"
                       label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
@@ -429,9 +430,12 @@ const InnovationDashboard = () => {
             </div>
             <div>
               <div className="font-medium mb-2">API Usage Growth</div>
-              <ChartContainer className="h-[200px]" config={chartConfig}>
+              <ChartContainer className="h-[170px]" config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={apiCallsData}>
+                  <LineChart 
+                    data={apiCallsData}
+                    margin={{ top: 5, right: 5, left: 0, bottom: 5 }}
+                  >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis />
