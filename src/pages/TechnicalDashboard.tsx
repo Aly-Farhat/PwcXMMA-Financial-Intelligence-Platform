@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   AreaChart, 
@@ -66,7 +65,6 @@ import { ConfusionMatrixCard } from "@/components/technical/ConfusionMatrixCard"
 import { FeatureImportanceCard } from "@/components/technical/FeatureImportanceCard";
 import { GraphVisualizationCard } from "@/components/technical/GraphVisualizationCard";
 
-// Performance data for different use cases
 const modelPerformanceData = {
   fraud: [
     { month: "Jan", auc: 0.92, precision: 0.88, recall: 0.84, f1: 0.86 },
@@ -117,12 +115,11 @@ const nodeCategoriesData = {
 
 const featureImportanceData = {
   fraud: [
-    { feature: "Transaction Frequency", importance: 0.28 },
-    { feature: "Amount Deviation", importance: 0.22 },
-    { feature: "Network Centrality", importance: 0.18 },
-    { feature: "Time Pattern", importance: 0.15 },
-    { feature: "Geographic Dispersion", importance: 0.12 },
-    { feature: "Account Age", importance: 0.05 },
+    { name: "merchant", importance: 0.32 },
+    { name: "category", importance: 0.25 },
+    { name: "name", importance: 0.20 },
+    { name: "state", importance: 0.15 },
+    { name: "trans_date_trans_time", importance: 0.08 },
   ],
   aml: [
     { feature: "Transaction Volume", importance: 0.25 },
@@ -193,7 +190,6 @@ const confusionMatrixData = {
   cyber: { tp: 913, fp: 125, fn: 174, tn: 3614 }
 };
 
-// Chart configuration
 const chartConfig = {
   auc: {
     label: "AUC Score",
@@ -283,7 +279,6 @@ const TechnicalDashboard: React.FC = () => {
         </div>
       </div>
       
-      {/* Performance Overview Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <ModelPerformanceCard 
           title="AUC" 
@@ -327,9 +322,7 @@ const TechnicalDashboard: React.FC = () => {
         />
       </div>
       
-      {/* Primary Content Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        {/* Performance Metrics Chart */}
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <div>
@@ -341,9 +334,9 @@ const TechnicalDashboard: React.FC = () => {
             </Badge>
           </CardHeader>
           <CardContent>
-            <ChartContainer className="h-[300px]" config={chartConfig}>
+            <ChartContainer className="h-[350px]" config={chartConfig}>
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={currentPerformanceData} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                <LineChart data={currentPerformanceData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="month" />
                   <YAxis domain={[0.7, 1]} />
@@ -389,7 +382,6 @@ const TechnicalDashboard: React.FC = () => {
           </CardFooter>
         </Card>
         
-        {/* Radar Chart for overall metrics */}
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center">
@@ -420,108 +412,102 @@ const TechnicalDashboard: React.FC = () => {
         </Card>
       </div>
       
-      {/* Explainability Section - conditionally rendered */}
       {showExplainability && (
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        {/* Feature Importance */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center text-lg">
-              <Layers className="mr-2 h-5 w-5 text-primary" />
-              Feature Importance
-            </CardTitle>
-            <CardDescription>Key model features ranked by impact</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  layout="vertical"
-                  data={currentFeatureImportanceData}
-                  margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" domain={[0, 0.35]} />
-                  <YAxis dataKey="feature" type="category" width={100} />
-                  <Tooltip />
-                  <Bar dataKey="importance" fill="#9b87f5" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </CardContent>
-        </Card>
-        
-        {/* Confusion Matrix */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center text-lg">
-              <Activity className="mr-2 h-5 w-5 text-primary" />
-              Confusion Matrix
-            </CardTitle>
-            <CardDescription>Classification performance breakdown</CardDescription>
-          </CardHeader>
-          <CardContent className="flex justify-center">
-            <ConfusionMatrixCard 
-              confusionMatrix={currentConfusionMatrix} 
-              useCaseType={activeTab as 'fraud' | 'aml' | 'cyber'} 
-            />
-          </CardContent>
-          <CardFooter>
-            <div className="text-xs text-muted-foreground w-full">
-              <div className="flex justify-between mb-1">
-                <span>Accuracy: {((currentConfusionMatrix.tp + currentConfusionMatrix.tn) / 
-                  (currentConfusionMatrix.tp + currentConfusionMatrix.tn + currentConfusionMatrix.fp + currentConfusionMatrix.fn)).toFixed(4)}</span>
-                <span>Error Rate: {((currentConfusionMatrix.fp + currentConfusionMatrix.fn) / 
-                  (currentConfusionMatrix.tp + currentConfusionMatrix.tn + currentConfusionMatrix.fp + currentConfusionMatrix.fn)).toFixed(4)}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center text-lg">
+                <Layers className="mr-2 h-5 w-5 text-primary" />
+                Feature Importance
+              </CardTitle>
+              <CardDescription>Key model features ranked by impact</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    layout="vertical"
+                    data={currentFeatureImportanceData}
+                    margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis type="number" domain={[0, 0.35]} />
+                    <YAxis dataKey="feature" type="category" width={100} />
+                    <Tooltip />
+                    <Bar dataKey="importance" fill="#9b87f5" />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
-              <div className="flex justify-between">
-                <span>Specificity: {(currentConfusionMatrix.tn / (currentConfusionMatrix.tn + currentConfusionMatrix.fp)).toFixed(4)}</span>
-                <span>Balanced Acc: {((currentConfusionMatrix.tp / (currentConfusionMatrix.tp + currentConfusionMatrix.fn) +
-                  currentConfusionMatrix.tn / (currentConfusionMatrix.tn + currentConfusionMatrix.fp)) / 2).toFixed(4)}</span>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center text-lg">
+                <Activity className="mr-2 h-5 w-5 text-primary" />
+                Confusion Matrix
+              </CardTitle>
+              <CardDescription>Classification performance breakdown</CardDescription>
+            </CardHeader>
+            <CardContent className="flex justify-center">
+              <ConfusionMatrixCard 
+                confusionMatrix={currentConfusionMatrix} 
+                useCaseType={activeTab as 'fraud' | 'aml' | 'cyber'} 
+              />
+            </CardContent>
+            <CardFooter>
+              <div className="text-xs text-muted-foreground w-full">
+                <div className="flex justify-between mb-1">
+                  <span>Accuracy: {((currentConfusionMatrix.tp + currentConfusionMatrix.tn) / 
+                    (currentConfusionMatrix.tp + currentConfusionMatrix.tn + currentConfusionMatrix.fp + currentConfusionMatrix.fn)).toFixed(4)}</span>
+                  <span>Error Rate: {((currentConfusionMatrix.fp + currentConfusionMatrix.fn) / 
+                    (currentConfusionMatrix.tp + currentConfusionMatrix.tn + currentConfusionMatrix.fp + currentConfusionMatrix.fn)).toFixed(4)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Specificity: {(currentConfusionMatrix.tn / (currentConfusionMatrix.tn + currentConfusionMatrix.fp)).toFixed(4)}</span>
+                  <span>Balanced Acc: {((currentConfusionMatrix.tp / (currentConfusionMatrix.tp + currentConfusionMatrix.fn) +
+                    currentConfusionMatrix.tn / (currentConfusionMatrix.tn + currentConfusionMatrix.fp)) / 2).toFixed(4)}</span>
+                </div>
               </div>
-            </div>
-          </CardFooter>
-        </Card>
-        
-        {/* Node Classification */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center text-lg">
-              <Network className="mr-2 h-5 w-5 text-primary" />
-              Node Classification
-            </CardTitle>
-            <CardDescription>Entity risk distribution</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={currentNodeCategoriesData}
-                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="#9b87f5">
-                    {currentNodeCategoriesData.map((entry, index) => (
-                      <Cell 
-                        key={`cell-${index}`} 
-                        fill={index === 0 ? "#ef4444" : index === 1 ? "#f97316" : index === 2 ? "#facc15" : "#68d391"} 
-                      />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+            </CardFooter>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center text-lg">
+                <Network className="mr-2 h-5 w-5 text-primary" />
+                Node Classification
+              </CardTitle>
+              <CardDescription>Entity risk distribution</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={currentNodeCategoriesData}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="value" fill="#9b87f5">
+                      {currentNodeCategoriesData.map((entry, index) => (
+                        <Cell 
+                          key={`cell-${index}`} 
+                          fill={index === 0 ? "#ef4444" : index === 1 ? "#f97316" : index === 2 ? "#facc15" : "#68d391"} 
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       )}
       
-      {/* Graph Visualization and Link Prediction */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        {/* Graph Visualization */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center text-lg">
@@ -541,7 +527,6 @@ const TechnicalDashboard: React.FC = () => {
           </CardFooter>
         </Card>
         
-        {/* Link Prediction */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center text-lg">
@@ -597,7 +582,6 @@ const TechnicalDashboard: React.FC = () => {
         </Card>
       </div>
       
-      {/* Real-time Monitoring */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center text-lg">

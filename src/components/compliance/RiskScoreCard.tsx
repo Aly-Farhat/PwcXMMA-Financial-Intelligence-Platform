@@ -43,16 +43,16 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({ individuals, compa
               <UserCheck className="mr-2 h-5 w-5 text-primary" />
               <h3 className="text-sm font-medium">Individuals</h3>
             </div>
-            <div className="h-[200px]">
+            <div className="h-[220px]">
               <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
+                <PieChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
                   <Pie
                     data={individuals}
                     cx="50%"
                     cy="50%"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={80}
+                    outerRadius={70}
                     fill="#8884d8"
                     dataKey="value"
                   >
@@ -60,8 +60,8 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({ individuals, compa
                       <Cell key={`cell-individual-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip />
-                  <Legend />
+                  <Tooltip formatter={(value: number) => [`${value}`, 'Count']} />
+                  <Legend verticalAlign="bottom" height={36} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -71,16 +71,16 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({ individuals, compa
               <Building2 className="mr-2 h-5 w-5 text-primary" />
               <h3 className="text-sm font-medium">Companies</h3>
             </div>
-            <div className="h-[200px]">
+            <div className="h-[220px]">
               <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
+                <PieChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
                   <Pie
                     data={companies}
                     cx="50%"
                     cy="50%"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={80}
+                    outerRadius={70}
                     fill="#8884d8"
                     dataKey="value"
                   >
@@ -88,8 +88,8 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({ individuals, compa
                       <Cell key={`cell-company-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip />
-                  <Legend />
+                  <Tooltip formatter={(value: number) => [`${value}`, 'Count']} />
+                  <Legend verticalAlign="bottom" height={36} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
