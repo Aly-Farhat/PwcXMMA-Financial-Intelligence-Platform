@@ -12,7 +12,7 @@ export default tseslint.config(
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
-    },
+    }, 
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
