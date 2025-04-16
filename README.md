@@ -3,22 +3,19 @@
 ## Project info
 
 ![image](https://github.com/user-attachments/assets/6e6a567a-d0ee-4bab-818b-f6aeae58f7d0)
+![image](https://github.com/user-attachments/assets/7767bd9c-5033-43e2-b183-7adf132ef8d4)
+![image](https://github.com/user-attachments/assets/53e1f4b1-4012-418b-822b-1672819025d4)
+![image](https://github.com/user-attachments/assets/2d8c2511-ae43-4f9c-a6b4-ebe2913280a5)
+![image](https://github.com/user-attachments/assets/aeb95c44-0406-4b73-9734-74a53cb27f27)
+
 
 
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/e5f7e136-76d7-474a-882b-c3cf7e51525d) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -61,15 +58,3 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/e5f7e136-76d7-474a-882b-c3cf7e51525d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
