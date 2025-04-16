@@ -1,8 +1,10 @@
-# Welcome to your Lovable project
+# Welcome to PwCxMMA Financial Intelligence Project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/e5f7e136-76d7-474a-882b-c3cf7e51525d
+![image](https://github.com/user-attachments/assets/6e6a567a-d0ee-4bab-818b-f6aeae58f7d0)
+
+
 
 ## How can I edit this code?
 
