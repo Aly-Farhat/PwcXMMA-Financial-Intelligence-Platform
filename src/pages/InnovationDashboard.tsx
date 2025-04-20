@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   AreaChart, 
@@ -7,7 +8,12 @@ import {
   CartesianGrid, 
   Tooltip, 
   Legend, 
-  ResponsiveContainer 
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  LineChart,
+  Line
 } from "recharts";
 import { 
   ChevronRight, 
