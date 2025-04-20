@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   AreaChart, 
@@ -60,10 +59,9 @@ const moduleUsageData = [
 ];
 
 const revenueModelData = [
-  { name: "License", value: 40 },
-  { name: "SaaS", value: 35 },
-  { name: "API Usage", value: 15 },
-  { name: "Consulting", value: 10 }
+  { name: "SaaS", value: 45 },
+  { name: "Consulting", value: 30 },
+  { name: "White-labeling", value: 25 }
 ];
 
 const apiCallsData = [
@@ -417,15 +415,15 @@ const InnovationDashboard = () => {
           <CardContent className="grid grid-cols-2 gap-4">
             <div>
               <div className="font-medium mb-2">Revenue Models</div>
-              <div className="h-[170px]">
+              <div className="h-[220px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={revenueModelData}
                       cx="50%"
                       cy="50%"
-                      labelLine={false}
-                      outerRadius={60}
+                      labelLine={true}
+                      outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
                       label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
