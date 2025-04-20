@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   BarChart, 
@@ -40,7 +39,6 @@ import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
-// Mock data for the dashboard
 const fraudData = [
   { name: "Jan", value: 85, previous: 72 },
   { name: "Feb", value: 88, previous: 73 },
@@ -106,7 +104,6 @@ const chartConfig = {
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState<string>("fraud");
   
-  // Get the appropriate data based on the active tab
   const getActiveData = () => {
     switch (activeTab) {
       case "fraud":
@@ -204,22 +201,22 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <KpiCard 
-          title="Detection Accuracy" 
-          value={activeData.accuracyImprovement}
+          title="Increased Recall" 
+          value={"+30%"}
           icon={<CircleCheck />}
           trend="up"
-          description="Increase in overall detection accuracy"
+          description="Improvement in model recall rate"
         />
         <KpiCard 
           title="False Positive Reduction" 
-          value={activeData.falsePositiveReduction}
+          value={"-85%"}
           icon={<TrendingDown />}
           trend="down"
           description="Decrease in false positive alerts"
         />
         <KpiCard 
           title="Operational Efficiency" 
-          value={activeData.operationalEfficiency}
+          value={"+40%"}
           icon={<TrendingUp />}
           trend="up"
           description="Improvement in workflow efficiency"
