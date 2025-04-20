@@ -362,15 +362,15 @@ const InnovationDashboard = () => {
                 <span className="font-medium">Theme Distribution</span>
                 <span className="text-sm text-muted-foreground">By client sector</span>
               </div>
-              <div className="h-[170px]">
+              <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={whitelabelThemeOptions}
                       cx="50%"
                       cy="50%"
-                      labelLine={false}
-                      outerRadius={60}
+                      labelLine={true}
+                      outerRadius={100}
                       fill="#8884d8"
                       dataKey="usage"
                       label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
@@ -415,7 +415,7 @@ const InnovationDashboard = () => {
           <CardContent className="grid grid-cols-2 gap-4">
             <div>
               <div className="font-medium mb-2">Revenue Models</div>
-              <div className="h-[220px]">
+              <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -423,7 +423,7 @@ const InnovationDashboard = () => {
                       cx="50%"
                       cy="50%"
                       labelLine={true}
-                      outerRadius={80}
+                      outerRadius={100}
                       fill="#8884d8"
                       dataKey="value"
                       label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
