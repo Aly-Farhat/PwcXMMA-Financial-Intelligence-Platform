@@ -1,21 +1,13 @@
-
 import React, { useState } from "react";
 import { 
   AreaChart, 
   Area, 
-  BarChart, 
-  Bar, 
-  LineChart, 
-  Line, 
   XAxis, 
   YAxis, 
   CartesianGrid, 
   Tooltip, 
   Legend, 
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell
+  ResponsiveContainer 
 } from "recharts";
 import { 
   ChevronRight, 
@@ -160,17 +152,30 @@ const InnovationDashboard = () => {
             <CardDescription>Component usage by type</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer className="h-[280px]" config={chartConfig}>
+            <ChartContainer 
+              className="h-[250px] w-full" 
+              config={chartConfig}
+            >
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                   data={moduleUsageData}
-                  margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
+                  margin={{ top: 10, right: 10, left: -15, bottom: 10 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
+                  <XAxis 
+                    dataKey="name" 
+                    tick={{ fontSize: 10 }} 
+                    padding={{ left: 10, right: 10 }} 
+                  />
+                  <YAxis 
+                    tick={{ fontSize: 10 }} 
+                    domain={[0, 100]} 
+                    padding={{ top: 10, bottom: 10 }} 
+                  />
                   <ChartTooltip />
-                  <Legend />
+                  <Legend 
+                    wrapperStyle={{ fontSize: 10, paddingTop: 10 }} 
+                  />
                   <Area 
                     type="monotone" 
                     dataKey="core" 
